@@ -59,8 +59,13 @@ def main():
     print(len(adjs))
 
     for adj in tqdm(adjs):
-        response = get_adj_prompts(adj)
-        responses.append(response)
+        try:
+            response = get_adj_prompts(adj)
+            responses.append(response)
+        except Exception as e:
+            print(e)
+            print(adj)
+            continue
 
 
     responses_df = pd.DataFrame(responses)
