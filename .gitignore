@@ -1,2 +1,7 @@
+#directories
 .env
 venv
+__pycache__
+
+# files
+*.pyc

@@ -2,6 +2,11 @@
 
 This project implements a scoring system for the Apples to Apples card game using the Anthropic Claude API to generate scoring rubrics and evaluate cards.
 
+grading criteria 1: assesses the quality of the adjective - noun pair, focusing on the intensity of the adjective.
+grading criteria 2: categorizes the noun into one of 5 category types in order of ability to modified by an adjective
+
+The grades from grading criteria 1 are added to the critera 2 to get a final adj-noun "fitness" score. 
+
 ## Setup
 
 1. Install dependencies:

@@ -1,49 +1,44 @@
-def grading_prompt1(adj: str = "addictive"):
+def build_grading_prompt1(adj: str = "addictive"):
     """prompt builder for grading criteria for intensity of an adjective"""
 
-    return f"""5 - Extreme/Intense: This level represents the most extreme or intense form of the adjective. It is the pinnacle of the characteristic, where its impact or presence is overwhelming and defining. Examples include:
+    instructions = f"""Generate at least three appropriate synonyms for {adj} at each of the following levels of intensity levels. 
+    Replace with an example of the adjective  or synonym at the specific intensity level.
 
-    Intense bitterness: A taste so bitter it's almost unbearable, like strong, unfiltered coffee.
-    Extreme joy: An overwhelming sense of happiness and elation, leaving one speechless.
-    Intense pain: A level of physical or emotional pain that is excruciating and all-encompassing.
-
-   synonyms: {adj}
-
-
-4 - Substantial/Significant: Here, the adjective is a notable and significant presence, but it may not be the sole defining factor. It has a strong impact and is a major component of the experience or description. Examples:
-
-    Substantial bitterness: A taste or experience with a strong bitter element, but balanced with other flavors or emotions.
-    Significant beauty: A sight or person with remarkable aesthetics, leaving a lasting impression.
-    Significant challenge: A task or obstacle that is difficult and demanding, requiring great effort.
-
-   synonyms: {adj}
-
-
-3 - Moderate/Noticeable: At this level, the adjective is a noticeable and distinct feature, but it is not the dominant force. It adds character and depth, but other elements are also present and influential. Examples include:
-
-    Moderate bitterness: A hint of bitterness that adds complexity, like a hint of lemon zest in a dessert.
-    Noticeable courage: A display of bravery that stands out, but is not the sole focus of the story.
-    Moderate success: An achievement that is notable, but not extraordinary.
-
-   synonyms: {adj}
-
-
-2 - Slight/Mild: Here, the adjective is a subtle and minor element, often easily overlooked. It adds a hint of the characteristic, but it is not a defining quality. Examples:
-
-    Slight bitterness: A barely perceptible bitter taste, like a hint of bitterness in a mild tea.
-    Mild curiosity: A subtle interest or intrigue, not a burning desire.
-    Slight disappointment: A minor letdown, easily forgotten.
-
-   synonyms: {adj}
-
-
-1 - None/Neutral: This level represents the absence or neutrality of the adjective. There is no trace of the characteristic, and other elements are more prominent or influential. Examples include:
-
-    None/Neutral bitterness: A taste or experience with absolutely no bitter notes, like a sweet dessert.
-    Neutral emotion: A state of mind with no strong feelings, a calm and balanced emotional state.
-    Nonexistent fear: A situation or person that evokes no sense of fear or anxiety.
-    synonyms: {adj}
+    Rating Criteria:
     """
+    criteria = {
+        5: {"description": "Extreme/Intense: This level represents the most extreme or intense form of the adjective. It is the pinnacle of the characteristic, where its impact or presence is overwhelming and defining. Examples include:",
+        "examples": ["Intense bitterness: A taste so bitter it's almost unbearable, like strong, unfiltered coffee.",
+        "Extreme joy: An overwhelming sense of happiness and elation, leaving one spee]chless."
+        "Intense pain: A level of physical or emotional pain that is excruciating and all-encompassing."],
+        "synonyms and examples": {"level": 5, "synonyms": [], "examples": []},
+        },
+        4: {"description": "Substantial/Significant: Here, the adjective is a notable and significant presence, but it may not be the sole defining factor. It has a strong impact and is a major component of the experience or description. Examples:",
+        "examples": ["Substantial bitterness: A taste or experience with a strong bitter element, but balanced with other flavors or emotions.",
+        "Significant beauty: A sight or person with remarkable aesthetics, leaving a lasting impression.",
+        "Significant challenge: A task or obstacle that is difficult and demanding, requiring great effort."],
+        "synonyms and examples": {"level": 4, "synonyms": [], "examples": []},
+        },
+        3: {"description": "Moderate/Noticeable: At this level, the adjective is a noticeable and distinct feature, but it is not the dominant force. It adds character and depth, but other elements are also present and influential. Examples:",
+        "examples": ["Moderate bitterness: A hint of bitterness that adds complexity, like a hint of lemon zest in a dessert.",
+        "Noticeable courage: A display of bravery that stands out, but is not the sole focus of the story."],
+        "synonyms and examples": {"level": 3, "synonyms": [], "examples": []},
+        },
+        2: {"description": "Slight/Mild: Here, the adjective is a subtle and minor element, often easily overlooked. It adds a hint of the characteristic, but it is not a defining quality. Examples:",
+        "examples": ["Slight bitterness: A barely perceptible bitter taste, like a hint of bitterness in a mild tea.",
+        "Mild curiosity: A subtle interest or intrigue, not a burning desire."],
+        "synonyms and examples": {"level": 2, "synonyms": [], "examples": []},
+        },
+        1: {"description": "None/Neutral: This level represents the absence or neutrality of the adjective. There is no trace of the characteristic, and other elements are more prominent or influential. Examples:",
+        "examples": ["None/Neutral bitterness: A taste or experience with absolutely no bitter notes, like a sweet dessert.",
+        "Neutral emotion: A state of mind with no strong feelings, a calm and balanced emotional state."],
+        "synonyms and examples": {"level": 1, "synonyms": [], "examples": []},
+        }
+    }
+
+    return instructions + str(criteria)
+
+
 
 def grading_prompt_2(noun: str = "bakery"):
     """prompt for noun with tangible features"""
@@ -79,6 +74,5 @@ def overall_instructions(adj: str = "bitter"):
         For events/experiences, consider the typical emotional impact
         For foods/drinks, prioritize taste unless there's a stronger emotional connection
         Consider cultural/contextual associations with {adj}
-        Penalize non-standard applications of {adj}
 """
     }
