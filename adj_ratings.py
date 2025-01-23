@@ -55,7 +55,7 @@ def get_adj_prompts(adj: str):
 
 def main():
     responses = []
-    adjs = pd.read_csv("adjs.csv")["adj"].tolist()[:100]
+    adjs = pd.read_csv("adjs.csv")["adj"].tolist()[300:400]
     print(len(adjs))
 
     for adj in tqdm(adjs):
@@ -70,7 +70,7 @@ def main():
 
     responses_df = pd.DataFrame(responses)
     print(responses_df.head())
-    responses_df.to_csv("adj_rubrics.csv", index=False)
+    responses_df.to_csv("adj_rubrics_300-400.csv", index=False)
 
 if __name__ == "__main__":
     main()  
