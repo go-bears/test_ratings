@@ -2,7 +2,7 @@ def build_grading_prompt1(adj: str = "addictive"):
     """prompt builder for grading criteria for intensity of an adjective"""
 
     instructions = f"""Generate at least three appropriate synonyms for {adj} at each of the following levels of intensity levels. 
-    Replace with an example of the adjective  or synonym at the specific intensity level.
+   Add synonyms and examples for {adj} at the specific intensity level.
 
     Rating Criteria:
     """

@@ -59,6 +59,9 @@ def get_noun_rating(noun: str):
 
 
 def main():
+    responses = []
+    nouns = pd.read_csv("nouns.csv")["noun"].tolist()
+
     for noun in sorted(nouns):
         response = get_noun_rating(noun)
         responses.append(response)
@@ -66,7 +69,7 @@ def main():
 
     responses_df = pd.DataFrame(responses)
     print(responses_df.head())
-    responses_df.to_csv("noun_ratings.csv", index=False)
+    responses_df.to_csv("noun_ratings_backup.csv", index=False)
 
 if __name__ == "__main__":
     main()  

@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import anthropic
+from tqdm import tqdm
+
 from dotenv import load_dotenv
 
 from prompts import build_grading_prompt1
@@ -31,11 +33,10 @@ def get_adj_prompts(adj: str):
                                 "properties": {
                                     "green_card_adj": {"type": "string", "description": adj},
                                     "criteria": {"type": "string", "description": prompt},
-                                    "synonyms": {"type": "array", "items": {"type": "string", "description": "synonyms for the adjective at each level"}},
-                                    "examples": {"type": "string", "description": "examples of the adjective at each level"}
+                                    "synonyms_and_examples": {"type": "string", "description": "examples of the adjective at each level"}
                                     ,
                                 },
-                                "required": ["green_card_adj", "criteria", "synonyms", "examples"]
+                                "required": ["green_card_adj", "synonyms_and_examples"]
                             }
                         }
                     },
@@ -54,9 +55,10 @@ def get_adj_prompts(adj: str):
 
 def main():
     responses = []
-    adjs = pd.read_csv("adjs.csv")["adj"].tolist()
+    adjs = pd.read_csv("adjs.csv")["adj"].tolist()[:100]
+    print(len(adjs))
 
-    for adj in adjs[:1]:
+    for adj in tqdm(adjs):
         response = get_adj_prompts(adj)
         responses.append(response)
 
